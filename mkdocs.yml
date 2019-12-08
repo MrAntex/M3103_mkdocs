@@ -1,0 +1,11 @@
+site_name: M3103 - CHIGNARD Julien
+
+nav:
+    - 'Introduction': 'index.md'
+    - 'Fonctionnement': 'fonctionnement.md'
+    - 'Résultats': 'resultats.md'
+    - 'Code': 'code.md'
+
+theme: simplex
+
+extra_javascript: ["https://cdn.plot.ly/plotly-latest.min.js"]
