@@ -19,3 +19,7 @@ Il est ensuite possible de tester les performances de la table de hachage. Ceci 
 Mis en rapport avec le taux de charge de la table, on peut se rendre compte des moments ou une insertion à nécéssité une expansion de la table.
 
 L'évolution des temps d'insertion aisi que des temps de recherche nous servent à montrer la complexité de la table de hachage utilisée, qui est de *O(1)* dans les deux cas (à l'exception des insertions demandant des réallocations quand c'est nécéssaire).
+
+## Build
+
+Tapez simplement `make` et le Makefile se chargera du reste.
