@@ -178,12 +178,6 @@ std::cout << "Insertion..." << std::endl;
 
 		for(uint w=mininsert;w<=maxinsertall;w=w+pas){
 
-			while(map.size()<w && map.size()<livre.size()){
-				int chosen = std::rand() % livre.size();
-				mot = livre[chosen];
-				map[mot]++;
-			}
-
 				tabtempsfind.clear();
 				tabtempsinsert.clear();
 
@@ -194,10 +188,6 @@ std::cout << "Insertion..." << std::endl;
 					time_insert = std::chrono::nanoseconds::zero();
 
 		std::unordered_map<std::string, int>::const_iterator found;
-
-		//do{ // On choisit un mot au hasard qui n'est pas dans la table
-
-		//}while(map.find(mot) != map.end());
 
 		tabtempsfind.clear();
 		for(uint i=1;i<=iterations;++i){
@@ -213,18 +203,10 @@ std::cout << "Insertion..." << std::endl;
 			tabtempsfind.push_back(time_find);
 }
 			time_find = std::chrono::nanoseconds::zero();
-			for(auto& n : tabtempsfind){
-				//if(n.count()<1500)
+			for(auto& n : tabtempsfind)
 				time_find += n;
-				/*else
-				time_find += std::chrono::nanoseconds(1500);*/
-				//std::cout<<" "<<n.count();
-			}
-
-				//std::cout<<std::endl << "temps find : "<<time_find.count()<<"size : "<<tabtempsfind.size()<<std::endl;
 
 			double totimefind = time_find.count() / (double)tabtempsfind.size();
-				//std::cout <<"totimefind : "<<totimefind<<std::endl;
 
 			tabtempsinsert.clear();
 		for(uint i=1;i<=iterations;++i){
@@ -245,8 +227,6 @@ std::cout << "Insertion..." << std::endl;
 					time_insert += n;
 
 				double totimeinsert = time_insert.count() / (double)tabtempsinsert.size();
-
-			//tabtempsinsert.push_back(time_insert);
 
 			float progress = (float)(w-mininsert)/(maxinsertall-mininsert);
 			int pos = 60 * progress;
@@ -270,40 +250,7 @@ std::cout << "Insertion..." << std::endl;
 		}
 
 
-	std::cout <<std::endl<< "Insertion terminée." << std::endl;
-
-	/*	std::cout << "Recherche..." << std::endl;
-		//maxfindall = maxfind + minfind;
-
-
-
-		for(uint i=0;i<maxfind;++i){
-			int chosen = std::rand() % livre.size();
-			mot = livre[chosen];
-
-			std::chrono::steady_clock::time_point debfind = std::chrono::steady_clock::now();
-		map.find(mot);
-		std::chrono::steady_clock::time_point endfind = std::chrono::steady_clock::now();
-		time_find = time_find + std::chrono::duration_cast<std::chrono::nanoseconds>(endfind - debfind);
-
-		float progress = (float)i/maxfind;
-		//std::cout << progress << "i : " << i << "max : " << maxinsert <<std::endl;
-		int pos = 60 * progress;
-
-		std::cout << "[";
-
-		for (int k = 0; k < 60; ++k) {
-			if (k < pos) std::cout << "#";
-			else if (k == pos) std::cout << ">";
-			else std::cout << " ";
-		}
-		std::cout << "] " << std::ceil(progress * 100.0) << " %\r";
-		std::cout.flush();
-
-		}
-		std::cout << "Recherche terminée." << std::endl;
-	}*/
-
+	std::cout <<std::endl<< "Insertions et recherches terminées." << std::endl;
 
 	std::cout << std::endl << map.size() << " mots différents" << std::endl;
 	std::cout << "Temps d'insertion pour "<<maxinsert<<" mots : "<< time_insert.count() << "ns ("<<(double)time_insert.count()/100000000<<"s)" << std::endl;
