@@ -230,8 +230,10 @@ std::chrono::nanoseconds time_insert = std::chrono::duration_cast&lt;std::chrono
 </code></pre>
 <h3 id="taux-de-charge">Taux de charge</h3>
 <p>La mesure du taux de charge est très importante car elle permet de voir quand la table devient saturée et quand les collisions ont le plus de chances d'arriver (cf : <a href="https://programming.guide/hash-table-load-factor-and-capacity.html">Load Factor</a>).</p>
-<p>Grâce à l'évolution du taux de charge de la table, et en la mettant en parallèle avec les temps d'insertion, on pourra voir quand la table est automatiquement réallouée lorsque sa taille devient trop petite (et donc que son taux de charge est trop haut).</p>
-<p>Ce taux de charge est calculé grâce à la fonction suivante :</p>
+<blockquote>
+<p><em>Le Taux de charge est calculé en divisant la taille de la table par le nombre de clés ayant au moins une valeur associée</em></p>
+</blockquote>
+<p>Ce taux de charge est récupéré grâce à la fonction suivante :</p>
 <pre><code>float tauxCharge = map.load_factor(); # Renvoie un float entre 0 et 1 qui correpond au taux de charge.
 </code></pre>
 <h3 id="moyennes">Moyennes</h3>
@@ -329,6 +331,8 @@ double totimeinsert = time_insert.count() / (double)tabtempsinsert.size();
 <pre><code>ficall&lt;&lt;map.size()-1&lt;&lt;" "&lt;&lt;totimeinsert/100000000&lt;&lt;" "&lt;&lt;totimefind/100000000&lt;&lt;" "&lt;&lt;map.load_factor()&lt;&lt;std::endl;
 # On divise tous les temps par 100 000 000 pour avoir des secondes.
 </code></pre>
+<p><br></p>
+<p>Vous pouvez télécharger un fichier de données en cliquant <a href="../data_13996x200.dat">ici</a></p>
 <p><br/></p>
 <hr />
 <h4 id="barre-de-progression">Barre de progression</h4>
